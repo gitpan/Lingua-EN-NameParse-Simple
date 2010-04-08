@@ -12,7 +12,11 @@ WriteMakefile(
       : ()),
     PL_FILES            => {},
     PREREQ_PM => {
-        'Test::More' => 0,
+    'Test::More' => 0,
+           'DBI' => 0,
+       'DB_File' => 0,
+         'Fcntl' => 0,
+        'locale' => 0
     },
     dist                => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
     clean               => { FILES => 'Lingua-EN-NameParse-Simple-*' },

@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name:               Lingua-EN-NameParse-Simple
-version:            0.11
+version:            0.12
 abstract:           Parse an English name into component parts 
 author:
     - Hugh Esco <hesco@campaignfoundations.com>
@@ -11,6 +11,10 @@ configure_requires:
 build_requires:
     ExtUtils::MakeMaker:  0
 requires:
+    DB_File:     0
+    DBI:         0
+    Fcntl:       0
+    locale:      0
     Test::More:  0
 no_index:
     directory:

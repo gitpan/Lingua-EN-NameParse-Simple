@@ -1,8 +1,9 @@
 Revision history for Lingua-EN-NameParse-Simple
 
-0.11 	
+0.12 	Thu Apr  8 13:40:26 EDT 2010
 	Added 'MISTER' to list of valid titles.
 	clarified authorship issues 
+	added prerequisites to Makefile.PL
 
 0.10 	Wed Apr  7 18:50:29 EDT 2010
 	Refactored as Lingua-EN-NameParse-Simple 
