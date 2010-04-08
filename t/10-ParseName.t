@@ -2,7 +2,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 8;
+use Test::More tests => 13;
 use lib qw( lib );
 use Lingua::EN::NameParse::Simple;
 
@@ -32,6 +32,22 @@ sub get_test_cases {
          FIRST => 'James', 
         MIDDLE => 'P', 
           LAST => 'Jones', 
+        SUFFIX => ''
+    };
+
+  $test_cases{'Minnie Mouse'} = {
+         TITLE => '', 
+         FIRST => 'Minnie', 
+        MIDDLE => '', 
+          LAST => 'Mouse', 
+        SUFFIX => ''
+    };
+
+  $test_cases{'Donald Q. Duck'} = {
+         TITLE => '', 
+         FIRST => 'Donald', 
+        MIDDLE => 'Q', 
+          LAST => 'Duck', 
         SUFFIX => ''
     };
 

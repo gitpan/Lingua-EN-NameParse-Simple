@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name:               Lingua-EN-NameParse-Simple
-version:            0.10
+version:            0.11
 abstract:           Parse an English name into component parts 
 author:
     - Hugh Esco <hesco@campaignfoundations.com>

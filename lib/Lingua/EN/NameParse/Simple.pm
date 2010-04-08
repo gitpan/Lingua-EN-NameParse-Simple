@@ -13,11 +13,11 @@ Lingua::EN::NameParse::Simple - Parse an English name into component parts
 
 =head1 VERSION
 
-Version 0.10
+Version 0.11
 
 =cut
 
-our $VERSION = '0.10';
+our $VERSION = '0.11';
 
 =head1 SYNOPSIS
 
@@ -47,7 +47,7 @@ sub ParseName {
   my($fnamematch,,$suffixmatch,$tmpelement);
   $fullname=$_[0];
   @namearray=split(/\s+/,$fullname);
-  @validtitle = ('MR', 'MS', 'MRS', 'MISS', 'DR', 'DOCTOR', 'REV', 'REVEREND', 'PASTOR', 'HONORABLE'); 
+  @validtitle = ('MR', 'MS', 'MRS', 'MISS', 'MISTER', 'DR', 'DOCTOR', 'REV', 'REVEREND', 'PASTOR', 'HONORABLE'); 
   @validsuffix = ('SR', 'SENIOR', 'JR', 'JUNIOR', 'II', 'III', 'IV');  
   $namearraysize=@namearray; # Number of items in array
   $i=0; # Keep track of name element
@@ -317,10 +317,20 @@ L<http://search.cpan.org/dist/Lingua-EN-NameParse-Simple/>
 
 =head1 COPYRIGHT & LICENSE
 
+Copyright (C) 2004-2010 by Hugh Esco, James Jones and the Georgia Green Party
+
 originally written as: 
 
 parser.pm -- Parses a name into its constituent parts 
 Copyright (C) 2004 by Hugh Esco, James Jones and the Georgia Green Party
+
+Original concept and early buggy version by Esco, original
+working module refactored by James Jones as parser.pm in 2004.
+In 2006 the state Committee of the Georgia Green Party agreed
+to release generally useful portions of its code base under
+the Gnu Public License.  The test suite was added and the
+module renamed and packaged for CPAN distribution by Esco
+doing business as CampaignFoundations.com in 2010.
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License

@@ -1,5 +1,9 @@
 Revision history for Lingua-EN-NameParse-Simple
 
+0.11 	
+	Added 'MISTER' to list of valid titles.
+	clarified authorship issues 
+
 0.10 	Wed Apr  7 18:50:29 EDT 2010
 	Refactored as Lingua-EN-NameParse-Simple 
 	and prepared for release to cpan
