@@ -2,7 +2,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 13;
+use Test::More tests => 14;
 use lib qw( lib );
 use Lingua::EN::NameParse::Simple;
 
@@ -49,6 +49,10 @@ sub get_test_cases {
         MIDDLE => 'Q', 
           LAST => 'Duck', 
         SUFFIX => ''
+    };
+
+  $test_cases{'So-and-soEnterprises.com'} = {
+         ERROR => 'Does not appear to be a person\'s name conforming to traditional English format', 
     };
 
   return \%test_cases;

@@ -13,20 +13,22 @@ Lingua::EN::NameParse::Simple - Parse an English name into component parts
 
 =head1 VERSION
 
-Version 0.12
+Version 0.13
 
 =cut
 
-our $VERSION = '0.12';
+our $VERSION = '0.13';
 
 =head1 SYNOPSIS
 
 Invoke this package as follows:  
 
-	use parser.pm; 
+	use Lingua::EN::NameParse::Simple;
 	my %name = Lingua::EN::NameParse::Simple::ParseName($fullname); 
 	# %name will contain available values for these keys:  
 	# TITLE, FIRST, MIDDLE, LAST, SUFFIX
+    # unless the FIRST and LAST keys are populated
+    # an ERROR key is returned instead.
 
 =head1 FUNCTIONS
 
@@ -266,6 +268,10 @@ sub ParseName {
   foreach $j (0...(scalar(@returnarray)-1)) { 
     $name{$returnarray[$j][0]} = $returnarray[$j][1]; 
   } 
+  unless( defined($name{'LAST'}) && defined($name{'FIRST'}) ){
+    $name{'ERROR'} = 'Does not appear to be a person\'s name conforming to traditional English format';
+    foreach my $key ('TITLE','FIRST','MIDDLE','LAST','SUFFIX'){ delete $name{$key}; }
+  }
   return (%name);
 } # End ParseName
 
