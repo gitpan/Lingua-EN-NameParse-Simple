@@ -2,7 +2,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 14;
+use Test::More tests => 15;
 use lib qw( lib );
 use Lingua::EN::NameParse::Simple;
 
@@ -49,6 +49,10 @@ sub get_test_cases {
         MIDDLE => 'Q', 
           LAST => 'Duck', 
         SUFFIX => ''
+    };
+
+  $test_cases{'123 Elm Street; Yourtown GA 30001'} = {
+         ERROR => 'We do not expect to see digits in a person\'s name', 
     };
 
   $test_cases{'So-and-soEnterprises.com'} = {

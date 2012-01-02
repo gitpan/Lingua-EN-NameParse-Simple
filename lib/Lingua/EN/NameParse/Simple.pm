@@ -13,11 +13,11 @@ Lingua::EN::NameParse::Simple - Parse an English name into component parts
 
 =head1 VERSION
 
-Version 0.13
+Version 0.14
 
 =cut
 
-our $VERSION = '0.13';
+our $VERSION = '0.14';
 
 =head1 SYNOPSIS
 
@@ -25,10 +25,17 @@ Invoke this package as follows:
 
 	use Lingua::EN::NameParse::Simple;
 	my %name = Lingua::EN::NameParse::Simple::ParseName($fullname); 
+    
 	# %name will contain available values for these keys:  
 	# TITLE, FIRST, MIDDLE, LAST, SUFFIX
+
     # unless the FIRST and LAST keys are populated
+    # or if digits are found in a key other than SUFFIX, 
     # an ERROR key is returned instead.
+
+    unless( defined( $name{'ERROR'} )){
+        print Dumper( \%name );
+    }
 
 =head1 FUNCTIONS
 
@@ -268,8 +275,15 @@ sub ParseName {
   foreach $j (0...(scalar(@returnarray)-1)) { 
     $name{$returnarray[$j][0]} = $returnarray[$j][1]; 
   } 
+  foreach my $key ('TITLE','FIRST','MIDDLE','LAST'){
+    if( defined( $name{$key} ) && $name{$key} =~ m/[0-9]/){
+      $name{'ERROR'} = 'We do not expect to see digits in a person\'s name';
+    }
+  }
   unless( defined($name{'LAST'}) && defined($name{'FIRST'}) ){
     $name{'ERROR'} = 'Does not appear to be a person\'s name conforming to traditional English format';
+  }
+  if( defined( $name{'ERROR'} )){
     foreach my $key ('TITLE','FIRST','MIDDLE','LAST','SUFFIX'){ delete $name{$key}; }
   }
   return (%name);
@@ -323,7 +337,7 @@ L<http://search.cpan.org/dist/Lingua-EN-NameParse-Simple/>
 
 =head1 COPYRIGHT & LICENSE
 
-Copyright (C) 2004-2010 by Hugh Esco, James Jones and the Georgia Green Party
+Copyright (C) 2004-2012 by Hugh Esco, James Jones and the Georgia Green Party
 
 originally written as: 
 
@@ -336,7 +350,9 @@ In 2006 the state Committee of the Georgia Green Party agreed
 to release generally useful portions of its code base under
 the Gnu Public License.  The test suite was added and the
 module renamed and packaged for CPAN distribution by Esco
-doing business as CampaignFoundations.com in 2010.
+doing business as CampaignFoundations.com in 2010.  In early 
+2012 Esco again extended this module to report an ERROR key 
+in certain circumstances.
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
